@@ -6,6 +6,7 @@ branches:
     - "/^release-[0-999].[0-999]$/"
     - master
 notifications:
+  slack: iwvgdevopsire-kzp9063:hPc8PXypnBMNRkQdOrwDfRWk
   email:
     recipients:
       - i.vlago@alumons.upm.es
