@@ -8,3 +8,4 @@
 3. Better Code Hub:
 [![BCH compliance](https://bettercodehub.com/edge/badge/ivlago/iwvg-devops-irene-vega?branch=develop)](https://bettercodehub.com/)
 4. Heroku
+[![Heroku broken](https://iwvg-devops-irene-vega.herokuapp.com/system/version-badge)](https://iwvg-devops-irene-vega.herokuapp.com/swagger-ui.html)
