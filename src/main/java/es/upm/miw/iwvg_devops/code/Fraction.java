@@ -58,6 +58,27 @@ public class Fraction {
     public double decimal() {
         return (double) numerator / denominator;
     }
+    public boolean isProper() {
+        return numerator < denominator;
+    }
+    public boolean isImProper() {
+        return numerator > denominator;
+    }
+    public boolean isEquivalent(Fraction fac, Fraction fac1) {
+        return (fac.numerator * fac1.denominator) == (fac1.numerator * fac.denominator);
+    }
+    public int add(Fraction fac, Fraction fac1) {
+        int min = Math.min(fac.denominator, fac1.denominator);
+        int num = min/fac.denominator;
+        int num1 = min/fac1.denominator;
+        return (int) fac.numerator*num + fac1.numerator*num1 / min;
+    }
+    public int multiply(Fraction fac, Fraction fac1) {
+        return (int) fac.numerator * fac1.numerator / fac.denominator * fac1.denominator;
+    }
+    public int divide(Fraction fac, Fraction fac1) {
+        return (int) fac.numerator * fac1.denominator / fac1.numerator * fac.denominator;
+    }
 
     @Override
     public String toString() {
