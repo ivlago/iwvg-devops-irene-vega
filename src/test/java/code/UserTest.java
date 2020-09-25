@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class UserTest {
+class UserTest {
     private User user;
 
     @BeforeEach
@@ -32,6 +32,13 @@ public class UserTest {
     @Test
     void testInitials() {
         assertEquals("n.", user.initials());
+    }
+    @Test
+    void testToString() {
+        user.toString();
+        assertEquals("id", user.getId());
+        assertEquals("name", user.getName());
+        assertEquals("familyName", user.getFamilyName());
     }
     @Test
     void testSets() {
