@@ -1,6 +1,7 @@
 package code;
 
 import es.upm.miw.iwvg_devops.code.User;
+import es.upm.miw.iwvg_devops.code.Fraction;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -13,7 +14,7 @@ class UserTest {
 
     @BeforeEach
     void before() {
-        ArrayList<Fraction> fractions = new ArrayList<Fraction>();
+        ArrayList<Fraction> fractions = new ArrayList<>();
         user = new User("id" ,"name", "familyName", fractions);
     }
 
