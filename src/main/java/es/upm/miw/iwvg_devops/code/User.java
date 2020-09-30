@@ -63,13 +63,19 @@ public class User {
         return this.name.substring(0, 1) + ".";
     }
 
-    public List<String> findUserIdBySomeProperFraction(){
+    public Stream<String> findUserIdBySomeProperFraction(){
         return new UsersDatabase().findAll()
                 .filter(user -> user.getFractions().stream()
                 .anyMatch(Fraction::isProper))
-                .map(User::getId)
-                .collect(Collectors.toList());
+                .map(User::getId);
 
+    }
+
+    public Stream<String> findUserFamilyNameBySomeImproperFraction(){
+        return new UsersDatabase().findAll()
+                .filter(user -> user.getFractions().stream()
+                .anyMatch(Fraction::isImProper))
+                .map(User::getFamilyName);
     }
 
     @Override

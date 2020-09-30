@@ -53,6 +53,11 @@ class UserTest {
     }
     @Test
     void findUserIdBySomeProperFraction() {
-        assertEquals(List.of("1","2","3","5"), user.findUserIdBySomeProperFraction());
+        assertEquals(List.of("1","2","3","5"), user.findUserIdBySomeProperFraction().collect(Collectors.toList()));
+    }
+    @Test
+    void findUserFamilyNameBySomeImproperFraction() {
+        assertEquals(List.of("Fernandez", "Blanco", "López", "Blanco", "Torres"),
+                user.findUserFamilyNameBySomeImproperFraction().collect(Collectors.toList()));
     }
 }
