@@ -78,6 +78,13 @@ public class User {
                 .map(User::getFamilyName);
     }
 
+    public Stream<String> findUserIdByAllProperFraction(){
+        return new UsersDatabase().findAll()
+                .filter(user -> user.getFractions().stream()
+                .allMatch(Fraction::isProper))
+                .map(User::getId);
+    }
+
     @Override
     public String toString() {
         return "User{" +

@@ -6,6 +6,7 @@ import es.upm.miw.iwvg_devops.code.UsersDatabase;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import javax.validation.OverridesAttribute;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -59,5 +60,11 @@ class UserTest {
     void findUserFamilyNameBySomeImproperFraction() {
         assertEquals(List.of("Fernandez", "Blanco", "López", "Blanco", "Torres"),
                 user.findUserFamilyNameBySomeImproperFraction().collect(Collectors.toList()));
+    }
+    @Test
+    void findUserIdByAllProperFraction() {
+        System.out.println(user.findUserIdByAllProperFraction().collect(Collectors.toList()));
+        assertEquals(List.of(),
+                user.findUserIdByAllProperFraction().collect(Collectors.toList()));
     }
 }
