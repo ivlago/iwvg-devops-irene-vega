@@ -2,15 +2,14 @@ package es.upm.miw.iwvg_devops.code;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class User {
 
     private String id;
-
     private String name;
-
     private String familyName;
-
     private List<Fraction> fractions;
 
     public User() {
@@ -62,6 +61,15 @@ public class User {
 
     public String initials() {
         return this.name.substring(0, 1) + ".";
+    }
+
+    public List<String> findUserIdBySomeProperFraction(){
+        return new UsersDatabase().findAll()
+                .filter(user -> user.getFractions().stream()
+                .anyMatch(Fraction::isProper))
+                .map(User::getId)
+                .collect(Collectors.toList());
+
     }
 
     @Override
