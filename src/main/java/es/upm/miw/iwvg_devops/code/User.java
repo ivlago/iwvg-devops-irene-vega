@@ -2,7 +2,6 @@ package es.upm.miw.iwvg_devops.code;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class User {
@@ -88,7 +87,7 @@ public class User {
     public Fraction findFractionSubtractionByUserName(String name) {
         return new UsersDatabase().findAll()
                 .filter(user -> user.getName().equals(name))
-                .map(User::getFractions).collect(Collectors.toList()).stream()
+                .flatMap(user -> user.getFractions().stream())
                 .reduce(new Fraction(), Fraction::substract);
     }
 

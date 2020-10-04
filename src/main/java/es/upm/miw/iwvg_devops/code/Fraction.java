@@ -94,8 +94,8 @@ public class Fraction {
     }
 
     public Fraction substract(Fraction fac) {
-        return new Fraction(fac.numerator * fac.denominator - this.numerator * this.denominator,
-                fac.denominator* this.denominator);
+        return new Fraction(fac.numerator * this.denominator - this.numerator * fac.denominator,
+                fac.denominator * this.denominator);
     }
 
     public Fraction multiply(Fraction fac, Fraction fac1) {

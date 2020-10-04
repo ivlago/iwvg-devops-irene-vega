@@ -73,8 +73,8 @@ class UserTest {
 
     @Test
     void findFractionSubtractionByUserName() {
-        System.out.println(1);
-        //System.out.println(user.findFractionSubtractionByUserName("Ana"));
-        //assertEquals(11/30, user.findFractionSubtractionByUserName("Ana"));
+        assertEquals(0, user.findFractionSubtractionByUserName("Paula").getNumerator());
+        assertEquals(0, user.findFractionSubtractionByUserName("Paula").getDenominator());
+        assertEquals(60, user.findFractionSubtractionByUserName("Ana").getDenominator());
     }
 }
