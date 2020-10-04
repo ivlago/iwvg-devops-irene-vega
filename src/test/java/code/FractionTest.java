@@ -62,7 +62,8 @@ class FractionTest {
 
     @Test
     void testAdd() {
-        assertEquals(4, generic.add(fraction,fraction1));
+        assertEquals(24, generic.add(fraction,fraction1).getNumerator());
+        assertEquals(6, generic.add(fraction,fraction1).getDenominator());
     }
 
     @Test
