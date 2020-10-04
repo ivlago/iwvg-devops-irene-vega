@@ -1,18 +1,15 @@
 package code;
 
-import es.upm.miw.iwvg_devops.code.User;
 import es.upm.miw.iwvg_devops.code.Fraction;
-import es.upm.miw.iwvg_devops.code.UsersDatabase;
+import es.upm.miw.iwvg_devops.code.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import javax.validation.OverridesAttribute;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class UserTest {
     private User user;
@@ -20,7 +17,7 @@ class UserTest {
     @BeforeEach
     void before() {
         ArrayList<Fraction> fractions = new ArrayList<>();
-        user = new User("id" ,"name", "familyName", fractions);
+        user = new User("id", "name", "familyName", fractions);
     }
 
     @Test
@@ -30,14 +27,17 @@ class UserTest {
         assertEquals("familyName", user.getFamilyName());
         assertEquals(0, user.getFractions().size());
     }
+
     @Test
     void testFullName() {
         assertEquals("name familyName", user.fullName());
     }
+
     @Test
     void testInitials() {
         assertEquals("n.", user.initials());
     }
+
     @Test
     void testToString() {
         user.toString();
@@ -45,6 +45,7 @@ class UserTest {
         assertEquals("name", user.getName());
         assertEquals("familyName", user.getFamilyName());
     }
+
     @Test
     void testSets() {
         user.setName("Jamal");
@@ -52,19 +53,28 @@ class UserTest {
         assertEquals("Jamal", user.getName());
         assertEquals("Murray", user.getFamilyName());
     }
+
     @Test
     void findUserIdBySomeProperFraction() {
-        assertEquals(List.of("1","2","3","5"), user.findUserIdBySomeProperFraction().collect(Collectors.toList()));
+        assertEquals(List.of("1", "2", "3", "5"), user.findUserIdBySomeProperFraction().collect(Collectors.toList()));
     }
+
     @Test
     void findUserFamilyNameBySomeImproperFraction() {
         assertEquals(List.of("Fernandez", "Blanco", "López", "Blanco", "Torres"),
                 user.findUserFamilyNameBySomeImproperFraction().collect(Collectors.toList()));
     }
+
     @Test
     void findUserIdByAllProperFraction() {
-        System.out.println(user.findUserIdByAllProperFraction().collect(Collectors.toList()));
         assertEquals(List.of(),
                 user.findUserIdByAllProperFraction().collect(Collectors.toList()));
+    }
+
+    @Test
+    void findFractionSubtractionByUserName() {
+        System.out.println(1);
+        //System.out.println(user.findFractionSubtractionByUserName("Ana"));
+        //assertEquals(11/30, user.findFractionSubtractionByUserName("Ana"));
     }
 }

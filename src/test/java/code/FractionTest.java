@@ -66,6 +66,11 @@ class FractionTest {
     }
 
     @Test
+    void testSubstract() {
+        assertEquals(0, generic.substract(fraction,fraction1));
+    }
+
+    @Test
     void testMultiply() {
         assertEquals(4, generic.multiply(fraction,fraction1));
     }

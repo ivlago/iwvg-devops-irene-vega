@@ -60,29 +60,36 @@ public class User {
     }
 
     public String initials() {
-        return this.name.substring(0, 1) + ".";
+        return this.name.charAt(0) + ".";
     }
 
-    public Stream<String> findUserIdBySomeProperFraction(){
+    public Stream<String> findUserIdBySomeProperFraction() {
         return new UsersDatabase().findAll()
                 .filter(user -> user.getFractions().stream()
-                .anyMatch(Fraction::isProper))
+                        .anyMatch(Fraction::isProper))
                 .map(User::getId);
 
     }
 
-    public Stream<String> findUserFamilyNameBySomeImproperFraction(){
+    public Stream<String> findUserFamilyNameBySomeImproperFraction() {
         return new UsersDatabase().findAll()
                 .filter(user -> user.getFractions().stream()
-                .anyMatch(Fraction::isImProper))
+                        .anyMatch(Fraction::isImProper))
                 .map(User::getFamilyName);
     }
 
-    public Stream<String> findUserIdByAllProperFraction(){
+    public Stream<String> findUserIdByAllProperFraction() {
         return new UsersDatabase().findAll()
                 .filter(user -> user.getFractions().stream()
-                .allMatch(Fraction::isProper))
+                        .allMatch(Fraction::isProper))
                 .map(User::getId);
+    }
+
+    public Fraction findFractionSubtractionByUserName(String name) {
+        return new UsersDatabase().findAll()
+                .filter(user -> user.getName().equals(name))
+                .map(User::getFractions).collect(Collectors.toList()).stream()
+                .reduce(new Fraction(), Fraction::substract);
     }
 
     @Override
