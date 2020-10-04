@@ -73,11 +73,13 @@ class FractionTest {
 
     @Test
     void testMultiply() {
-        assertEquals(4, generic.multiply(fraction,fraction1));
+        assertEquals(24, generic.multiply(fraction,fraction1).getNumerator());
+        assertEquals(6, generic.multiply(fraction,fraction1).getDenominator());
     }
 
     @Test
     void testDivide() {
-        assertEquals(1, generic.divide(fraction,fraction1));
+        assertEquals(12, generic.divide(fraction,fraction1).getNumerator());
+        assertEquals(12, generic.divide(fraction,fraction1).getDenominator());
     }
 }
