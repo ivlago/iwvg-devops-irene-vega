@@ -59,7 +59,9 @@ public class Fraction {
         return (double) numerator / denominator;
     }
 
-    public boolean isProper() { return numerator < denominator;  }
+    public boolean isProper() {
+        return numerator < denominator;
+    }
 
     public boolean isImProper() {
         return numerator > denominator;
@@ -69,7 +71,7 @@ public class Fraction {
         return (fac.numerator * fac1.denominator) == (fac1.numerator * fac.denominator);
     }
 
-    public int MCD (int fac, int fac1){
+    private int MCD(int fac, int fac1) {
         int i = 0;
         while (fac1 != 0) {
             i = fac1;
@@ -79,19 +81,29 @@ public class Fraction {
         return fac;
     }
 
-    public int add(Fraction fac, Fraction fac1) {
+    private int mcmFunction(Fraction fac, Fraction fac1) {
         int mcm = (fac.denominator * fac1.denominator) / MCD(fac.denominator, fac1.denominator);
-        int num = mcm/fac.denominator;
-        int num1 = mcm/fac1.denominator;
-        return (int) (fac.numerator*num + fac1.numerator*num1) / mcm;
+        return mcm;
     }
 
-    public int multiply(Fraction fac, Fraction fac1) {
-        return (int) (fac.numerator * fac1.numerator) / (fac.denominator * fac1.denominator);
+    public Fraction add(Fraction fac, Fraction fac1) {
+        int mcm = mcmFunction(fac, fac1);
+        int num = mcm / fac.denominator;
+        int num1 = mcm / fac1.denominator;
+        return new Fraction(fac.numerator * num + fac1.numerator * num1, mcm);
     }
 
-    public int divide(Fraction fac, Fraction fac1) {
-        return (int) (fac.numerator * fac1.denominator) / (fac1.numerator * fac.denominator);
+    public Fraction substract(Fraction fac) {
+        return new Fraction(fac.numerator * this.denominator - this.numerator * fac.denominator,
+                fac.denominator * this.denominator);
+    }
+
+    public Fraction multiply(Fraction fac, Fraction fac1) {
+        return new Fraction(fac.numerator * fac1.numerator, fac.denominator * fac1.denominator);
+    }
+
+    public Fraction divide(Fraction fac, Fraction fac1) {
+        return new Fraction(fac.numerator * fac1.denominator, fac1.numerator * fac.denominator);
     }
 
     @Override
